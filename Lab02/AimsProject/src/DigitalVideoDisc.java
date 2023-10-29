@@ -5,6 +5,10 @@ public class DigitalVideoDisc {
     private String director;
     private int length;
     private float cost;
+	// Class member - Section 16
+	public static int nbDigitalVideoDiscs = 0;
+	// Instance member - Section 16
+	private int id;
 
     // Getters - Section 9
     public String getTitle() {
@@ -31,6 +35,10 @@ public class DigitalVideoDisc {
     public DigitalVideoDisc(String title) {
 		super();
 		this.title = title;
+		// Increase the number of DVDs
+		nbDigitalVideoDiscs++;
+		// Set the id of the DVD
+		this.id = nbDigitalVideoDiscs;
 	}
 
 	public DigitalVideoDisc(String title, String category, float cost) {
@@ -38,6 +46,10 @@ public class DigitalVideoDisc {
 		this.title = title;
 		this.category = category;
 		this.cost = cost;
+		// Increase the number of DVDs
+		nbDigitalVideoDiscs++;
+		// Set the id of the DVD
+		this.id = nbDigitalVideoDiscs;
 	}
 
 	public DigitalVideoDisc(String title, String category, String director, float cost) {
@@ -46,6 +58,10 @@ public class DigitalVideoDisc {
 		this.category = category;
 		this.director = director;
 		this.cost = cost;
+		// Increase the number of DVDs
+		nbDigitalVideoDiscs++;
+		// Set the id of the DVD
+		this.id = nbDigitalVideoDiscs;
 	}
 
 	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
@@ -55,7 +71,12 @@ public class DigitalVideoDisc {
 		this.director = director;
 		this.length = length;
 		this.cost = cost;
+		// Increase the number of DVDs
+		nbDigitalVideoDiscs++;
+		// Set the id of the DVD
+		this.id = nbDigitalVideoDiscs;
 	}
+
     // Passing parameter - Section 15
 
     // Temporary add a setter for title
