@@ -1,5 +1,3 @@
-package classes;
-
 public class Cart {
     
     // Initialize Cart class - Section 11
@@ -49,6 +47,17 @@ public class Cart {
         }
         return total;
     }
+
+    // Print number, title and cost of DVDs in the cart
+    public void printCart() {
+        System.out.println("***********************CART***********************");
+        System.out.println("Ordered Items:");
+        for (int i = 0; i < qtyOrdered; i++) {
+            System.out.printf("%-3d%-20s%-5.2f$\n", i + 1, itemsOrdered[i].getTitle(), itemsOrdered[i].getCost());
+        }
+        System.out.printf("   Total cost:         %-5.2f$\n", totalCost());
+        System.out.println("***************************************************");
+    }
     
     // Method overloading - Section 14
     // Overloading by differing the type of parameters - Section 14.1
@@ -67,18 +76,18 @@ public class Cart {
     }
     
     // Pass an arbitrary number of DVDs to the cart
-    public void addDigitalVideoDisc(DigitalVideoDisc... dvdList) {
-        if (qtyOrdered + dvdList.length <= MAX_NUMBER_ORDERED) {
-            for (DigitalVideoDisc digitalVideoDisc : dvdList) {
-                itemsOrdered[qtyOrdered] = digitalVideoDisc;
-                qtyOrdered++;
-            }
-            System.out.println("The discs have been added");
-        }
-        else {
-            System.out.println("The cart is almost full");
-        }
-    }
+    // public void addDigitalVideoDisc(DigitalVideoDisc... dvdList) {
+    //     if (qtyOrdered + dvdList.length <= MAX_NUMBER_ORDERED) {
+    //         for (DigitalVideoDisc digitalVideoDisc : dvdList) {
+    //             itemsOrdered[qtyOrdered] = digitalVideoDisc;
+    //             qtyOrdered++;
+    //         }
+    //         System.out.println("The discs have been added");
+    //     }
+    //     else {
+    //         System.out.println("The cart is almost full");
+    //     }
+    // }
     /* Pass an array of DVDs to the cart vs pass an arbitrary number of DVDs to the cart:
     - The difference is that the first one requires an array as a parameter while the second one requires a list of parameters.
     - The first one is more suitable when we have an array of DVDs and we want to add all of them to the cart.
