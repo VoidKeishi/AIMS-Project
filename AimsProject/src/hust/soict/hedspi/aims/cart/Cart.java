@@ -1,3 +1,6 @@
+package hust.soict.hedspi.aims.cart;
+import hust.soict.hedspi.aims.disc.DigitalVideoDisc;
+
 public class Cart {
     
     // Initialize Cart class - Section 11
