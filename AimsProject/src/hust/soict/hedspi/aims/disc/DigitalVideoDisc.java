@@ -1,3 +1,4 @@
+package hust.soict.hedspi.aims.disc;
 public class DigitalVideoDisc {
     // Attributes - Section 8
     private String title;
@@ -80,8 +81,8 @@ public class DigitalVideoDisc {
     // Passing parameter - Section 15
 
     // Temporary add a setter for title
-	// public void setTitle(String title) {
-	// 	this.title = title;
-	// }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
 }
