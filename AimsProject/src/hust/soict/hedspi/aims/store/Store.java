@@ -1,17 +1,26 @@
 package hust.soict.hedspi.aims.store;
 import java.util.ArrayList;
 
-import hust.soict.hedspi.aims.media.DigitalVideoDisc;
+import hust.soict.hedspi.aims.media.Media;
 
 public class Store {
-    private ArrayList<DigitalVideoDisc> itemsInStore = new ArrayList<DigitalVideoDisc>();
+    private ArrayList<Media> itemsInStore = new ArrayList<Media>();
 
-    public void addDVD(DigitalVideoDisc dvd){
-        itemsInStore.add(dvd);
+    public void addMedia(Media media) {
+        if (itemsInStore.contains(media)) {
+            System.out.println("Media is already in the list");
+            return;
+        }
+        itemsInStore.add(media);
+        System.out.println("Add media successfully");
     }
-
-    public void removeDVD(DigitalVideoDisc dvd){
-        itemsInStore.remove(dvd);
+    public void removeMedia(Media media) {
+        if (!itemsInStore.contains(media)) {
+            System.out.println("Media is not in the list");
+            return;
+        }
+        itemsInStore.remove(media);
+        System.out.println("Remove media successfully");
     }
 
 }
