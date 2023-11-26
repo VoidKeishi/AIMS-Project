@@ -1,3 +1,4 @@
+
 package hust.soict.hedspi.aims.disc;
 public class DigitalVideoDisc {
     // Attributes - Section 8
@@ -84,5 +85,23 @@ public class DigitalVideoDisc {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
+	// Lab 03
+	public String toString() {
+		String result = id + ". DVD - " + title + " - " + category + " - " + director + " - " + length + ": " + cost + "$";
+		return result;
+	}
 
+	public boolean isMatch(String title){
+		if (this.title.toLowerCase().equals(title.toLowerCase())) {
+			return true;
+		}
+		return false;
+	}
+	public boolean isMatch(int id){
+		if (this.id == id) {
+			return true;
+		}
+		return false;
+	}
 }
