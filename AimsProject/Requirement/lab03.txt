@@ -1,0 +1,8 @@
+- What class should implement the Comparable interface?
+-> Class that need simple sorting rules based on a single attribute.
+- In those classes, how should you implement the compareTo()method to reflect the ordering that we want?
+-> We should implement the compareTo() method to return a negative number if the current object's attribute is "less" than the other object's attribute, 0 if they are equal, and a positive number if the current object's attribute is greater than the other object's attribute. The metric to define "less" and "greater" depends on the attribute. For example cost is "less" if it is smaller than the other object's cost. In that case we will return the difference between the current object's cost and the other object's cost.
+- Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this Comparable interface approach?
+-> No, we can only have one ordering rule.
+- Suppose the DVDs have a different ordering rule from the other media types, that is by title, then decreasing length, then cost. How would you modify your code to allow this?
+-> We will use the Comparator interface. We will create a class that implements the Comparator interface and implements the compare() method based on the rule. We will then pass an object of this class to the sort() method of the Collections class.
