@@ -5,10 +5,22 @@ import java.util.ArrayList;
 public class CompactDisc extends Disc implements Playable{
 	private String artist;
 	private ArrayList<Track> tracks = new ArrayList<Track>();
-	public CompactDisc() {
-		// TODO Auto-generated constructor stub
-		super();
-	}
+
+	public CompactDisc(int id, String title, String artist) {
+        super(id, title);
+        this.artist = artist;
+    }
+
+    public CompactDisc(int id, String title, String artist, String category, float cost) {
+        super(id, title, category, cost);
+        this.artist = artist;
+    }
+
+    public CompactDisc(int id, String title, String artist, String category, float cost, String director) {
+        super(id, title, category, cost, director);
+        this.artist = artist;
+    }
+	
 	public String getArtist() {
 		return artist;
 	}
@@ -41,5 +53,12 @@ public class CompactDisc extends Disc implements Playable{
 		for (Track track : tracks) {
 			track.play();
 		}
+	}
+	public String toString() {
+		String tracks = "";
+		for (Track track : this.tracks) {
+			tracks += track.getTitle() + ", ";
+		}
+		return "CD - " + this.getTitle() + " - " + this.getCategory() + " - " + this.getArtist() + " - " + tracks + " " + this.getLength() + " " + this.getCost() + " $";
 	}
 }

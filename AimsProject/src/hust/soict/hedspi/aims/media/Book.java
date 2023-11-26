@@ -7,9 +7,9 @@ public class Book extends Media{
 
 	private List<String> authors = new ArrayList<String>();
 
-	public Book(){
-		// TODO Auto-generated constructor stub
-	}
+	public Book(int id, String title, String category, float cost) {
+        super(id, title, category, cost);
+    }
 
 	public void addAuthor(String authorName) {
 		if (authors.contains(authorName)) {
@@ -28,4 +28,13 @@ public class Book extends Media{
 		authors.remove(authorName);
 		System.out.println("Remove author successfully");
 	}
+
+	public String toString() {
+		String authors = "";
+		for (String author : this.authors) {
+			authors += author + ", ";
+		}
+		return "Book - " + this.getTitle() + " - " + this.getCategory() + " - " + authors + " " + this.getCost() + " $";
+	}
+
 }
