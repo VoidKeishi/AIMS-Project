@@ -27,6 +27,7 @@ public class TestToStringMedia{
 		items.add(dvd1);
 		for (Media item : items) {
 			System.out.println(item.toString());
+			// When we call the toString() method, it will call the method of the object's class, each class has its own toString() method
 		}
 	}
 }
