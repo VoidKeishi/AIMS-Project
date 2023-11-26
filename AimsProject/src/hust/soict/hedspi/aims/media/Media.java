@@ -63,4 +63,12 @@ public abstract class Media {
 	}
 	public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
     public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
+
+	public boolean isMatch(String title){
+		return (this.getTitle().toLowerCase().equals(title.toLowerCase()));
+	}
+    
+    public boolean isMatch(int id) {
+    	return this.getId() == id;
+    }
 }

@@ -27,20 +27,25 @@ public class DigitalVideoDisc extends Disc implements Playable{
 		return result;
 	}
 
-	public boolean isMatch(String title){
-		if (this.getTitle().toLowerCase().equals(title.toLowerCase())) {
-			return true;
-		}
-		return false;
-	}
-	public boolean isMatch(int id){
-		if (this.getId() == id) {
-			return true;
-		}
-		return false;
-	}
+	// public boolean isMatch(String title){
+	// 	if (this.getTitle().toLowerCase().equals(title.toLowerCase())) {
+	// 		return true;
+	// 	}
+	// 	return false;
+	// }
+	// public boolean isMatch(int id){
+	// 	if (this.getId() == id) {
+	// 		return true;
+	// 	}
+	// 	return false;
+	// }
+	
 	public void play() {
-		System.out.println("Playing DVD: " + this.getTitle());
-		System.out.println("DVD length: " + this.getLength());
-	}
+    	if (this.getLength() <= 0) {
+    		System.out.println("DVD " + this.getTitle() + " can't be played!");
+    	} else {
+    		System.out.println("Playing DVD: " + this.getTitle());
+        	System.out.println("DVD length: " + this.getLength());
+    	}
+    }
 }

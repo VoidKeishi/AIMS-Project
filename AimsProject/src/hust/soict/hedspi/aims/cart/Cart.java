@@ -1,5 +1,6 @@
 package hust.soict.hedspi.aims.cart;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.aims.media.Media;
@@ -94,4 +95,62 @@ public class Cart {
         }
     }
 
+    // Section 18
+    public void filterById(int id) {
+    	int filtered = 0;
+    	for(Media item: itemsOrdered) {
+    		if (item.isMatch(id)) {
+    			System.out.println("Filter result: \n");
+    			System.out.println(item.toString());
+    			filtered = 1;
+    		}
+    	}
+    	if (filtered == 0) {
+    		System.out.println("No such media in cart!");
+    	}
+    }
+    
+    public void filterByTitle(String title) {
+    	int filtered = 0;
+    	for(Media item: itemsOrdered) {
+    		if (item.isMatch(title)) {
+    			System.out.println("Filter result: \n");
+    			System.out.println(item.toString());
+    			filtered = 1;
+    		}
+    	}
+    	if (filtered == 0) {
+    		System.out.println("No such media in cart!");
+    	}
+    }
+    
+    public void sortMediaByTitle() {
+    	Collections.sort(itemsOrdered, Media.COMPARE_BY_TITLE_COST);
+    }
+    
+    public void sortMediaByCost() {
+    	Collections.sort(itemsOrdered, Media.COMPARE_BY_COST_TITLE);
+    }
+    
+    public void emptyCart() {
+    	itemsOrdered.clear();
+    }
+    
+    public Media searchMediaByTitle(String title) {
+    	for (Media item: itemsOrdered) {
+    		if (item.isMatch(title)) return item;
+    	}
+    	return null;
+    }
+    public void printCartListFormat() {
+    	if (itemsOrdered.size() == 0) {
+    		System.out.println("No items in cart to display!");
+    	} else {
+    		System.out.println("The current cart: ");
+    		for (int i = 0; i < itemsOrdered.size(); i++) {
+    			System.out.println(i+1 + ". " + itemsOrdered.get(i).toString());
+    		}
+    		System.out.printf("Total cost: %.2f\n\n", totalCost());
+    	}
+    }
 }
