@@ -26,4 +26,20 @@ public abstract class Media {
 		return cost;
 	}
 
+	protected void setId(int id) {
+		this.id = id;
+	}
+
+	protected void setTitle(String title) {
+		this.title = title;
+	}
+
+	protected void setCategory(String category) {
+		this.category = category;
+	}
+
+	protected void setCost(float cost) {
+		this.cost = cost;
+	}
+
 }

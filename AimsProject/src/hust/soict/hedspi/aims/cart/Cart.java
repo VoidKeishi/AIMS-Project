@@ -38,18 +38,17 @@ public class Cart {
     public void printCart() {
         System.out.println("***********************CART***********************");
         System.out.println("Ordered Items:");
-        for (int i = 0; i < qtyOrdered; i++) {
-            System.out.println(itemsOrdered[i].toString());
+        for (Media item : itemsOrdered) {
+            System.out.println(item.toString());
         }
         System.out.printf("Total cost: %-5.2f$\n", totalCost());
         System.out.println("***************************************************");
     }
     
     public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList) {
-        if (qtyOrdered + dvdList.length <= MAX_NUMBER_ORDERED) {
+        if (itemsOrdered.size() + dvdList.length <= MAX_NUMBER_ORDERED) {
             for (DigitalVideoDisc digitalVideoDisc : dvdList) {
-                itemsOrdered[qtyOrdered] = digitalVideoDisc;
-                qtyOrdered++;
+                itemsOrdered.add(digitalVideoDisc);
             }
             System.out.println("The discs have been added");
         }
@@ -57,42 +56,40 @@ public class Cart {
             System.out.println("The cart is almost full");
         }
     }
-    
+
     public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
-        if (qtyOrdered + 2 <= MAX_NUMBER_ORDERED) {
-            itemsOrdered[qtyOrdered] = dvd1;
-            qtyOrdered++;
-            itemsOrdered[qtyOrdered] = dvd2;
-            qtyOrdered++;
+        if (itemsOrdered.size() + 2 <= MAX_NUMBER_ORDERED) {
+            itemsOrdered.add(dvd1);
+            itemsOrdered.add(dvd2);
         }
-    }    
+    }
 
     public void search(int id){
-        // Check if the DVD have the id is in the cart
-        int flag = 0;
-        for (int i = 0; i < qtyOrdered; i++) {
-            if (itemsOrdered[i].isMatch(id)) {
-                System.out.println(itemsOrdered[i].toString());
-                flag = 1;
+        // Check if the DVD with the id is in the cart
+        boolean found = false;
+        for (Media item : itemsOrdered) {
+            if (item instanceof DigitalVideoDisc && ((DigitalVideoDisc) item).isMatch(id)) {
+                System.out.println(item.toString());
+                found = true;
                 break;
             }
         }
-        if (flag == 0) {
+        if (!found) {
             System.out.println("The disc is not in the cart");
         }
     }
 
     public void search(String title){
-        // Check if the DVD have the title is in the cart
-        int flag = 0;
-        for (int i = 0; i < qtyOrdered; i++) {
-            if (itemsOrdered[i].isMatch(title)) {
-                System.out.println(itemsOrdered[i].toString());
-                flag = 1;
+        // Check if the DVD with the title is in the cart
+        boolean found = false;
+        for (Media item : itemsOrdered) {
+            if (item instanceof DigitalVideoDisc && ((DigitalVideoDisc) item).isMatch(title)) {
+                System.out.println(item.toString());
+                found = true;
                 break;
             }
         }
-        if (flag == 0) {
+        if (!found) {
             System.out.println("The disc is not in the cart");
         }
     }
