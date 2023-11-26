@@ -1,53 +1,37 @@
 package hust.soict.hedspi.aims.cart;
+import java.util.ArrayList;
+
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
+import hust.soict.hedspi.aims.media.Media;
 
 public class Cart {
 
     // Attributes
     public static final int MAX_NUMBER_ORDERED = 20;
-    private DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBER_ORDERED];
-    private int qtyOrdered = 0;
-
-    // Methods
-    public void addDigitalVideoDisc(DigitalVideoDisc disc) {
-        if (qtyOrdered < MAX_NUMBER_ORDERED) {
-            itemsOrdered[qtyOrdered] = disc;
-            qtyOrdered++;
-            System.out.println("The disc has been added to the cart");
-        } else {
-            System.out.println("The cart is almost full");
+    private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+    public void addMedia(Media media) {
+        if (itemsOrdered.contains(media)) {
+            System.out.println("Media is already in the list");
+            return;
         }
+        itemsOrdered.add(media);
+        System.out.println("Add media successfully");
     }
-
-    public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
-        if (qtyOrdered > 0) {
-            int flag = 0;
-            for (int i = 0; i < qtyOrdered; i++) {
-                if (itemsOrdered[i].getTitle().equals(disc.getTitle())) {
-                    for (int j = i; j < qtyOrdered - 1; j++) {
-                        itemsOrdered[j] = itemsOrdered[j + 1];
-                    }
-                    qtyOrdered--;
-                    flag = 1;
-                    System.out.println("The disc has been removed");
-                    break;
-                }
-            }
-            if (flag == 0) {
-                System.out.println("The disc is not in the cart");
-            }
-        } 
-        else {
-            System.out.println("The cart is empty");
+    public void removeMedia(Media media) {
+        if (!itemsOrdered.contains(media)) {
+            System.out.println("Media is not in the list");
+            return;
         }
+        itemsOrdered.remove(media);
+        System.out.println("Remove media successfully");
     }
 
     public float totalCost() {
-        float total = 0;
-        for (int i = 0; i < qtyOrdered; i++) {
-            total += itemsOrdered[i].getCost();
+        float sum = 0;
+        for (Media media : itemsOrdered) {
+            sum += media.getCost();
         }
-        return total;
+        return sum;
     }
 
     // Print the list of ordered items of a cart - Lab 3 Section 4
