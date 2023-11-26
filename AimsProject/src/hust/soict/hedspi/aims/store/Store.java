@@ -22,5 +22,22 @@ public class Store {
         itemsInStore.remove(media);
         System.out.println("Remove media successfully");
     }
-
+    
+    // Section 18
+    public Media findMediaByTitle(String title) {
+		for (Media m: itemsInStore) {
+			if (m.isMatch(title)) {
+				System.out.println("Media founded!\n" + m.toString());
+				return m;
+			}
+		}
+		System.out.println("No such media in store!");
+		return null;
+	}
+	
+	public void showStore() {
+		for (int i = 0; i < itemsInStore.size(); i++) {
+			System.out.println(i+1 + ". " + itemsInStore.get(i).toString() );
+		}
+	}
 }
