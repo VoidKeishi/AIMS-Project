@@ -1,9 +1,6 @@
 
 package hust.soict.hedspi.aims.media;
-public class DigitalVideoDisc extends Media{
-    private String director;
-    private int length;
-    // Class member - Section 16
+public class DigitalVideoDisc extends Disc{
 	public static int nbDigitalVideoDiscs = 0;
 	public String getDirector() {
         return director;
@@ -12,8 +9,7 @@ public class DigitalVideoDisc extends Media{
     public int getLength() {
         return length;
     }
-
-    // Constructors - Section 10
+	
     public DigitalVideoDisc(String title) {
 		super();
 		this.title = title;
