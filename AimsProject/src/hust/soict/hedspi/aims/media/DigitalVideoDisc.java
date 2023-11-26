@@ -3,67 +3,38 @@ package hust.soict.hedspi.aims.media;
 public class DigitalVideoDisc extends Disc implements Playable{
 	public static int nbDigitalVideoDiscs = 0;
 	
-    public DigitalVideoDisc(String title) {
-		super();
-		this.setTitle(title);
-		// Increase the number of DVDs
-		nbDigitalVideoDiscs++;
-		// Set the id of the DVD
-		this.setId(nbDigitalVideoDiscs);
-	}
+    public DigitalVideoDisc(int id, String title) {
+        super(id, title);
+    }
 
-	public DigitalVideoDisc(String title, String category, float cost) {
-		super();
-		this.setTitle(title);
-		this.setCategory(category);
-		this.setCost(cost);
-		// Increase the number of DVDs
-		nbDigitalVideoDiscs++;
-		// Set the id of the DVD
-		this.setId(nbDigitalVideoDiscs);
-	}
+    public DigitalVideoDisc(int id, String title, String category, float cost) {
+        super(id, title, category, cost);
+    }
 
-	public DigitalVideoDisc(String title, String category, String director, float cost) {
-		super();
-		this.setTitle(title);
-		this.setCategory(category);
-		this.setDirector(director);
-		this.setCost(cost);
-		// Increase the number of DVDs
-		nbDigitalVideoDiscs++;
-		// Set the id of the DVD
-		this.setId(nbDigitalVideoDiscs);
-	}
+    public DigitalVideoDisc(int id, String title, String category, float cost, String director) {
+        super(id, title, category, cost, director);
+    }
 
-	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-		super();
-		this.setTitle(title);
-		this.setCategory(category);
-		this.setDirector(director);
-		this.setLength(length);
-		this.setCost(cost);
-		// Increase the number of DVDs
-		nbDigitalVideoDiscs++;
-		// Set the id of the DVD
-		this.setId(nbDigitalVideoDiscs);
-	}
+    public DigitalVideoDisc(int id, String title, String category, float cost, String director, int length) {
+        super(id, title, category, cost, director, length);
+    }
 
     // Passing parameter - Section 15
 
     // Lab 03
 	public String toString() {
-		String result = id + ". DVD - " + title + " - " + category + " - " + director + " - " + length + ": " + cost + "$";
+		String result = this.getId() + ". DVD - " + this.getTitle() + " - " + this.getCategory() + " - " + this.getDirector() + " - " + this.getLength() + ": " + this.getCost() + "$";
 		return result;
 	}
 
 	public boolean isMatch(String title){
-		if (this.title.toLowerCase().equals(title.toLowerCase())) {
+		if (this.getTitle().toLowerCase().equals(title.toLowerCase())) {
 			return true;
 		}
 		return false;
 	}
 	public boolean isMatch(int id){
-		if (this.id == id) {
+		if (this.getId() == id) {
 			return true;
 		}
 		return false;
