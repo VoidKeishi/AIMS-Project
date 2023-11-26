@@ -2,57 +2,50 @@
 package hust.soict.hedspi.aims.media;
 public class DigitalVideoDisc extends Disc implements Playable{
 	public static int nbDigitalVideoDiscs = 0;
-	public String getDirector() {
-        return director;
-    }
-
-    public int getLength() {
-        return length;
-    }
 	
     public DigitalVideoDisc(String title) {
 		super();
-		this.title = title;
+		this.setTitle(title);
 		// Increase the number of DVDs
 		nbDigitalVideoDiscs++;
 		// Set the id of the DVD
-		this.id = nbDigitalVideoDiscs;
+		this.setId(nbDigitalVideoDiscs);
 	}
 
 	public DigitalVideoDisc(String title, String category, float cost) {
 		super();
-		this.title = title;
-		this.category = category;
-		this.cost = cost;
+		this.setTitle(title);
+		this.setCategory(category);
+		this.setCost(cost);
 		// Increase the number of DVDs
 		nbDigitalVideoDiscs++;
 		// Set the id of the DVD
-		this.id = nbDigitalVideoDiscs;
+		this.setId(nbDigitalVideoDiscs);
 	}
 
 	public DigitalVideoDisc(String title, String category, String director, float cost) {
 		super();
-		this.title = title;
-		this.category = category;
-		this.director = director;
-		this.cost = cost;
+		this.setTitle(title);
+		this.setCategory(category);
+		this.setDirector(director);
+		this.setCost(cost);
 		// Increase the number of DVDs
 		nbDigitalVideoDiscs++;
 		// Set the id of the DVD
-		this.id = nbDigitalVideoDiscs;
+		this.setId(nbDigitalVideoDiscs);
 	}
 
 	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
 		super();
-		this.title = title;
-		this.category = category;
-		this.director = director;
-		this.length = length;
-		this.cost = cost;
+		this.setTitle(title);
+		this.setCategory(category);
+		this.setDirector(director);
+		this.setLength(length);
+		this.setCost(cost);
 		// Increase the number of DVDs
 		nbDigitalVideoDiscs++;
 		// Set the id of the DVD
-		this.id = nbDigitalVideoDiscs;
+		this.setId(nbDigitalVideoDiscs);
 	}
 
     // Passing parameter - Section 15

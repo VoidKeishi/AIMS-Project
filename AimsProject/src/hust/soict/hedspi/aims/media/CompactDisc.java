@@ -1,5 +1,7 @@
 package hust.soict.hedspi.aims.media;
 
+import java.util.ArrayList;
+
 public class CompactDisc extends Disc implements Playable{
 	private String artist;
 	private ArrayList<Track> tracks = new ArrayList<Track>();

@@ -13,5 +13,10 @@ public class Disc extends Media {
 		// TODO Auto-generated constructor stub
 		super();
 	}
-
+	protected void setLength(int length) {
+		this.length = length;
+	}
+	protected void setDirector(String director) {
+		this.director = director;
+	}
 }
