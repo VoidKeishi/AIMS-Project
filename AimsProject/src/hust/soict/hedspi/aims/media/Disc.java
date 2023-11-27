@@ -17,12 +17,12 @@ public class Disc extends Media {
         super(id, title, category, cost);
     }
 
-    public Disc(int id, String title, String category, float cost, String director) {
+    public Disc(int id, String title, String category, String director,  float cost) {
         super(id, title, category, cost);
         this.director = director;
     }
 
-    public Disc(int id, String title, String category, float cost, String director, int length) {
+    public Disc(int id, String title, String category, String director, int length, float cost) {
         super(id, title, category, cost);
         this.length = length;
         this.director = director;

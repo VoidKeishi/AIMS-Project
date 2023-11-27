@@ -15,7 +15,7 @@ public class TestToStringMedia{
 		Book book1 = new Book(1, "Harry Potter", "Fantasy", 20f);
 		book1.addAuthor("J.K.Rowling");
 		DigitalVideoDisc dvd1 = new DigitalVideoDisc(2, "The Lion King", "Animation", 19.95f);
-		CompactDisc cd1 = new CompactDisc(123, "Thriller", "Micheal Jackson", "Pop", 25.65f, "Micheal Jackson");
+		CompactDisc cd1 = new CompactDisc(123, "Thriller", "Micheal Jackson", "Pop", "Micheal Jackson", 25.65f);
 		Track track1 = new Track("Wanna Be Startin' Somethin", 363);
         Track track2 = new Track("Baby Be Mine", 260);
         Track track3 = new Track("The Girl Is Mine", 222);
