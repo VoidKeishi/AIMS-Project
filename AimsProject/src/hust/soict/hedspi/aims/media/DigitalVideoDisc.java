@@ -18,9 +18,7 @@ public class DigitalVideoDisc extends Disc implements Playable{
         super(id, title, category, director, length, cost);
     }
 
-    // Passing parameter - Section 15
-
-    // Lab 03
+    // id - DVD - title - category - director - length - cost
 	public String toString() {
 		String result = this.getId() + ". DVD - " + this.getTitle() + " - " + this.getCategory() + " - " + this.getDirector() + " - " + this.getLength() + ": " + this.getCost() + "$";
 		return result;

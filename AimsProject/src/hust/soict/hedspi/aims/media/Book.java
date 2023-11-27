@@ -28,13 +28,15 @@ public class Book extends Media{
 		authors.remove(authorName);
 		System.out.println("Remove author successfully");
 	}
-
+	// id - "Book" - title - category - authors - cost
 	public String toString() {
 		String authors = "";
 		for (String author : this.authors) {
 			authors += author + ", ";
 		}
-		return "Book - " + this.getTitle() + " - " + this.getCategory() + " - " + authors + " " + this.getCost() + " $";
+		// Remove the last ", "
+		authors = authors.substring(0, authors.length() - 2);
+		return this.getId() + ". Book - " + this.getTitle() + " - " + this.getCategory() + " - " + authors + ": " + this.getCost() + "$";
 	}
 
 }
