@@ -1,9 +1,0 @@
-- Question: If you create a constructor method to build a DVD by title then create a constructor method to build a DVD by category. Does JAVA allow you to do this?
--> Answer: Yes, JAVA allows you to do this. You can create as many constructors as you want. The only thing you need to do is to make sure that the signature of these constructors are unique (method signature = method name + parameter list).
-- Question: Is JAVA a Pass by Value or a Pass by Reference programming language?
--> Answer: JAVA is a Pass by Value programming language. This means that when you pass an object to a method, the method will receive a copy of the object. If you change the object inside the method, the original object will not be changed.
-- Question:
-● After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain?
--> Answer: Because the method swap() only changes the value of the parameters, not the objects themselves. The objects jungleDVD and cinderellaDVD are not changed.
-● After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
--> Answer: Because the method changeTitle() changes the title of the object jungleDVD, unlike the method swap() which only changes the value of the parameters.

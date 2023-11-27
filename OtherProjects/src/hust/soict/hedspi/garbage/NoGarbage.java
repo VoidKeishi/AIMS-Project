@@ -1,4 +1,4 @@
-package hust.soict.dsai.garbage;
+package hust.soict.hedspi.garbage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;

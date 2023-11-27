@@ -72,7 +72,7 @@ public class Aims {
 			scanner.nextLine();
 			System.out.println("Enter the media director: ");
 			director = scanner.nextLine();
-			DigitalVideoDisc dvd = new DigitalVideoDisc(id, title, category, cost, director, length);
+			DigitalVideoDisc dvd = new DigitalVideoDisc(id, title, category, director, length, cost);
 			scanner.close();
 			return dvd;
 		} else {
@@ -80,7 +80,7 @@ public class Aims {
 			director = scanner.nextLine();
 			System.out.println("Enter the media artist: ");
 			artist = scanner.nextLine();
-			CompactDisc cd = new CompactDisc(id, title, artist, category, cost, director);
+			CompactDisc cd = new CompactDisc(id, title, artist, category, director, cost);
 			while(true) {
 				System.out.println("Enter the track title (Enter q to quit): ");
 				trackTitle = scanner.nextLine();

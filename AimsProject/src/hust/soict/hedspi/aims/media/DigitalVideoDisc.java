@@ -1,7 +1,6 @@
 
 package hust.soict.hedspi.aims.media;
 public class DigitalVideoDisc extends Disc implements Playable{
-	public static int nbDigitalVideoDiscs = 0;
 	
     public DigitalVideoDisc(int id, String title) {
         super(id, title);
@@ -11,12 +10,12 @@ public class DigitalVideoDisc extends Disc implements Playable{
         super(id, title, category, cost);
     }
 
-    public DigitalVideoDisc(int id, String title, String category, float cost, String director) {
-        super(id, title, category, cost, director);
+    public DigitalVideoDisc(int id, String title, String category, String director, float cost) {
+        super(id, title, category, director, cost);
     }
 
-    public DigitalVideoDisc(int id, String title, String category, float cost, String director, int length) {
-        super(id, title, category, cost, director, length);
+    public DigitalVideoDisc(int id, String title, String category, String director, int length, float cost) {
+        super(id, title, category, director, length, cost);
     }
 
     // Passing parameter - Section 15
