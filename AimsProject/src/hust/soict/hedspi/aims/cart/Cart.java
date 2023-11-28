@@ -10,6 +10,8 @@ public class Cart {
     // Attributes
     public static final int MAX_NUMBER_ORDERED = 20;
     private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+    
+    //Methods
     public void addMedia(Media media) {
         if (itemsOrdered.contains(media)) {
             System.out.println("Media is already in the list");
@@ -18,6 +20,7 @@ public class Cart {
         itemsOrdered.add(media);
         System.out.println("Add media successfully");
     }
+    
     public void removeMedia(Media media) {
         if (!itemsOrdered.contains(media)) {
             System.out.println("Media is not in the list");
@@ -35,7 +38,6 @@ public class Cart {
         return sum;
     }
 
-    // Print the list of ordered items of a cart - Lab 3 Section 4
     public void printCart() {
         System.out.println("***********************CART***********************");
         System.out.println("Ordered Items:");
@@ -142,6 +144,7 @@ public class Cart {
     	}
     	return null;
     }
+    
     public void printCartListFormat() {
     	if (itemsOrdered.size() == 0) {
     		System.out.println("No items in cart to display!");
