@@ -21,6 +21,17 @@ public class Cart {
         System.out.println("Add media successfully");
     }
     
+    public void addMedia(Media[] mediaArray) {
+        for (Media media : mediaArray) {
+            if (itemsOrdered.contains(media)) {
+                System.out.println("Media " + media + " is already in the list");
+            } else {
+                itemsOrdered.add(media);
+                System.out.println("Added media " + media + " successfully");
+            }
+        }
+    }
+
     public void removeMedia(Media media) {
         if (!itemsOrdered.contains(media)) {
             System.out.println("Media is not in the list");
@@ -39,34 +50,21 @@ public class Cart {
     }
 
     public void printCart() {
-        System.out.println("***********************CART***********************");
-        System.out.println("Ordered Items:");
-        for (Media item : itemsOrdered) {
-            System.out.println(item.toString());
-        }
-        System.out.printf("Total cost: %-5.2f$\n", totalCost());
-        System.out.println("***************************************************");
-    }
-    
-    public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList) {
-        if (itemsOrdered.size() + dvdList.length <= MAX_NUMBER_ORDERED) {
-            for (DigitalVideoDisc digitalVideoDisc : dvdList) {
-                itemsOrdered.add(digitalVideoDisc);
-            }
-            System.out.println("The discs have been added");
+        if (itemsOrdered.isEmpty()) {
+            System.out.println("The cart is empty");
+            return;
         }
         else {
-            System.out.println("The cart is almost full");
+            System.out.println("***********************CART***********************");
+            System.out.println("Ordered Items:");
+            for (Media item : itemsOrdered) {
+                System.out.println(item.toString());
+            }
+            System.out.printf("Total cost: %-5.2f$\n", totalCost());
+            System.out.println("***************************************************");
         }
     }
-
-    public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
-        if (itemsOrdered.size() + 2 <= MAX_NUMBER_ORDERED) {
-            itemsOrdered.add(dvd1);
-            itemsOrdered.add(dvd2);
-        }
-    }
-
+    
     public void search(int id){
         // Check if the DVD with the id is in the cart
         boolean found = false;
@@ -138,22 +136,11 @@ public class Cart {
     	itemsOrdered.clear();
     }
     
+    // Return the media instead of just checking
     public Media searchMediaByTitle(String title) {
     	for (Media item: itemsOrdered) {
     		if (item.isMatch(title)) return item;
     	}
     	return null;
-    }
-    
-    public void printCartListFormat() {
-    	if (itemsOrdered.size() == 0) {
-    		System.out.println("No items in cart to display!");
-    	} else {
-    		System.out.println("The current cart: ");
-    		for (int i = 0; i < itemsOrdered.size(); i++) {
-    			System.out.println(i+1 + ". " + itemsOrdered.get(i).toString());
-    		}
-    		System.out.printf("Total cost: %.2f\n\n", totalCost());
-    	}
     }
 }

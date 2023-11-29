@@ -29,13 +29,8 @@ public class Aims {
 		String trackTitle;
 		int trackLength;
 		
-		System.out.println("Choose type of media:");
-		System.out.println("--------------------------------");
-		System.out.println("1. Book");
-		System.out.println("2. DVD");
-		System.out.println("3. CD");
-		System.out.println("--------------------------------");
-		System.out.println("Please choose a number: 1-2-3");
+		// Print media type menu
+		Menu.mediaTypeMenu();
 		
 		do {
 			mediaType = scanner.nextInt();
@@ -179,7 +174,7 @@ public class Aims {
         	   					} else System.out.println("Failed to play media!");
         	   					break;
         	   				case 4:
-        	   					cart.printCartListFormat();
+        	   					cart.printCart();
         	   					Menu.cartMenu();
         	   					break;
         	   				case 0:
@@ -213,7 +208,7 @@ public class Aims {
     	   			break;
     	   		case 3:
     	   			while(option != 0) {
-    	   				cart.printCartListFormat();
+    	   				cart.printCart();
         	   			Menu.cartMenu();
         	   			do {
           	     		   option = scanner.nextInt();
@@ -271,7 +266,7 @@ public class Aims {
         	   					cart.removeMedia(founded);
         	   					break;
         	   				case 4:
-        	   					cart.printCartListFormat();
+        	   					cart.printCart();
         	   					System.out.println("Enter the title of the media you want to play: ");
         	   					title = scanner.nextLine();
         	   					founded = cart.searchMediaByTitle(title);
