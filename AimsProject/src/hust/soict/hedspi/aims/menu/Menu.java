@@ -1,6 +1,6 @@
 package hust.soict.hedspi.aims.menu;
 public class Menu{
-	public static void showMenu() {
+	public static void mainMenu() {
 		System.out.println("AIMS: ");
 		System.out.println("--------------------------------");
 		System.out.println("1. View store");

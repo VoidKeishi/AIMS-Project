@@ -89,12 +89,12 @@ public class Aims {
 			return cd;
 		}
 	}
-
+	
     public static void main(String[] args) {
        Store store = new Store();
        Cart cart = new Cart();
        while(true) {
-    	   Menu.showMenu();
+    	   Menu.mainMenu();
     	   Scanner scanner = new Scanner(System.in);
     	   int option;
     	   do {
