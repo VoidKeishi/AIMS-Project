@@ -23,7 +23,10 @@ public class Store {
         System.out.println("Remove media successfully");
     }
     
-    // Section 18
+    public ArrayList<Media> getItemsInStore() {
+		return itemsInStore;
+	}
+	// Section 18
     public Media findMediaByTitle(String title) {
 		for (Media m: itemsInStore) {
 			if (m.isMatch(title)) {
