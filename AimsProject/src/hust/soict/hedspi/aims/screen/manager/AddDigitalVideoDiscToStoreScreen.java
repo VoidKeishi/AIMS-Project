@@ -15,7 +15,6 @@ import hust.soict.hedspi.aims.store.Store;
 
 public class AddDigitalVideoDiscToStoreScreen extends JFrame {
 	private Store store;
-
 	private JTextField title;
 	private JTextField category;
 	private JTextField director;
