@@ -9,7 +9,7 @@ import javafx.scene.shape.Circle;
 
 public class PainterController {
 
-	private int toolMode;
+	private Color brush;
     @FXML
     private ToggleGroup ToolOption;
     
@@ -23,23 +23,18 @@ public class PainterController {
 
     @FXML
     void drawingAreaMouseDragged(MouseEvent event) {
-    	Color brush;
-    	if (toolMode == 1) {
-    		brush = Color.BLACK;
-    	}
-    	else brush = Color.WHITE;
     	Circle newCircle = new Circle(event.getX(),event.getY(),4,brush);
     	drawingAreaPane.getChildren().add(newCircle);
     }
     
     @FXML
     void penModeActivated(ActionEvent event) {
-    	toolMode = 1;
+    	brush = Color.BLACK;
     }
     
     @FXML
     void eraserModeActivated(ActionEvent event) {
-    	toolMode = 0;
+    	brush = Color.WHITE;
     }
 
 }
