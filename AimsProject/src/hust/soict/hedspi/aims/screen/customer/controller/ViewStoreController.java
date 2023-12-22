@@ -44,8 +44,9 @@ public class ViewStoreController {
 					column = 0;
 					row ++;
 				}
+				column +=1;
 				
-				gridPane.add(anchorPane, column++, row);
+				gridPane.add(anchorPane, column, row);
 				GridPane.setMargin(anchorPane, new Insets(20,10,10,10));	
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -55,7 +56,7 @@ public class ViewStoreController {
     @FXML
     void btnViewCartPressed(ActionEvent event) {
     	try {
-    		final String CART_FXML_FILE_PATH = "/hust/soict/dsai/aims/screen/customer/view/Cart.fxml";
+    		final String CART_FXML_FILE_PATH = "/hust/soict/hedspi/aims/screen/customer/view/Cart.fxml";
     		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(CART_FXML_FILE_PATH));
     		fxmlLoader.setController(new CartController(store,cart));
     		Parent root = fxmlLoader.load();

@@ -7,7 +7,9 @@ public abstract class Media {
 	private String title;
 	private String category;
 	private float cost;
-	
+	public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
+    public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
+    
 	public Media(int id, String title) {
         this.id = id;
         this.title = title;
@@ -61,8 +63,7 @@ public abstract class Media {
 		}
 		return false;
 	}
-	public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
-    public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
+
 
 	public boolean isMatch(String title){
 		return (this.getTitle().toLowerCase().equals(title.toLowerCase()));

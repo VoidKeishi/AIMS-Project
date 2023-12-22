@@ -1,8 +1,12 @@
 package hust.soict.hedspi.aims.cart;
 import java.util.Collections;
 
+import javax.naming.LimitExceededException;
+
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.aims.media.Media;
+import hust.soict.hedspi.aims.media.Playable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -13,34 +17,47 @@ public class Cart {
     private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
     
     //Methods
-    public void addMedia(Media media) {
-        if (itemsOrdered.contains(media)) {
-            System.out.println("Media is already in the list");
-            return;
-        }
-        itemsOrdered.add(media);
-        System.out.println("Add media successfully");
-    }
-    
-    public void addMedia(Media[] mediaArray) {
-        for (Media media : mediaArray) {
-            if (itemsOrdered.contains(media)) {
-                System.out.println("Media " + media + " is already in the list");
-            } else {
-                itemsOrdered.add(media);
-                System.out.println("Added media " + media + " successfully");
-            }
-        }
-    }
+    public void addMedia(Media media) throws LimitExceededException, IllegalArgumentException{
+		if (itemsOrdered.size() == 0) {
+			itemsOrdered.add(media);
+			System.out.println("This media has been added");
+		}
+		else if (itemsOrdered.size() < MAX_NUMBER_ORDERED) {
+			int check = 0;
+			for (int i = 0; i < itemsOrdered.size(); i++ ) {
+				if (itemsOrdered.get(i).equals(media)) {
+					check += 1;
+				}
+			}
+			if (check == 0) {
+				itemsOrdered.add(media);
+				System.out.println("This media has been added");
+			}
+			else {
+				throw new IllegalArgumentException("ERROR: This media is already in the cart");
+			}
 
-    public void removeMedia(Media media) {
-        if (!itemsOrdered.contains(media)) {
-            System.out.println("Media is not in the list");
-            return;
-        }
-        itemsOrdered.remove(media);
-        System.out.println("Remove media successfully");
-    }
+		}
+		else {
+			throw new LimitExceededException("ERROR: The number of media has reached its limit");
+		}
+	}
+
+    public void removeMedia(Media media) throws IllegalArgumentException{
+		int index = -1;
+		for (int i = 0; i < itemsOrdered.size(); i ++) {
+			if (itemsOrdered.get(i).equals(media)) {
+				index = i;
+			}
+		}
+		if (index == -1) {
+			throw new IllegalArgumentException("This media is not in the cart");
+		}
+		else {
+			itemsOrdered.remove(index);
+			System.out.println("This media has been removed");
+		}
+	}
 
     public float totalCost() {
         float sum = 0;
@@ -148,9 +165,21 @@ public class Cart {
     public ObservableList<Media> getItemsOrdered() {
 		return itemsOrdered;
 	}
-
-	public String cartInfo() {
-		// TODO Auto-generated method stub
-		return null;
+	public void playMedia(String title) {
+		Media media = null ;
+		for (int i = 0; i < itemsOrdered.size(); i ++) {
+			if (itemsOrdered.get(i).getTitle().equals(title)) {
+				media = itemsOrdered.get(i);
+				break;
+			}
+		}
+		if (media instanceof Playable) {
+			try {
+				((Playable) media).play();
+			}catch (PlayerException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 	}
+
 }

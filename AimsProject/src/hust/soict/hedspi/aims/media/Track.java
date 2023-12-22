@@ -1,5 +1,7 @@
 package hust.soict.hedspi.aims.media;
 
+import hust.soict.hedspi.aims.exception.PlayerException;
+
 public class Track implements Playable{
 	private String title;
 	private int length;
@@ -13,14 +15,6 @@ public class Track implements Playable{
 	public int getLength() {
 		return length;
 	}
-	public void play() {
-		if (this.getLength() <= 0) {
-			System.out.println("Track " + this.getTitle() + " can't be played");
-		} else {			
-			System.out.println("Playing track: " + this.getTitle());
-			System.out.println("Track length: " + this.getLength());
-		}
-    }
 	public boolean equals(Object obj) {
 		if (obj instanceof Track) {
 			Track track = (Track) obj;
@@ -30,8 +24,20 @@ public class Track implements Playable{
 		}
 		return false;
 	}
-	public String playMedia(){
-		String out = "Playing track: " + this.getTitle() + "\n" + "Track length: " + this.getLength();
-		return out;
+	public void play() throws PlayerException{
+		if (this.getLength() > 0) {
+			System.out.println("Playing track: " + this.getTitle());
+			System.out.println("Track length: " + this.getLength());
+		}else {
+			throw new PlayerException("ERROR: DVD length is non-positive!");
+		}
+	}
+	public String playMedia() throws PlayerException{
+		if (this.getLength() > 0) {
+			String out = "Playing track: " + this.getTitle() + "\n" + "Track length: " + this.getLength();
+			return out;
+		}else {
+			throw new PlayerException("ERROR: DVD length is non-positive!");
+		}
 	}
 }
