@@ -188,7 +188,7 @@ public class CartController {
     @FXML
     void btnViewStorePressed(ActionEvent event) {
     	try {
-    		final String STORE_FXML_FILE_PATH = "/hust/soict/dsai/aims/screen/customer/view/Store.fxml";
+    		final String STORE_FXML_FILE_PATH = "/hust/soict/hedspi/aims/screen/customer/view/Store.fxml";
     		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(STORE_FXML_FILE_PATH));
     		fxmlLoader.setController(new ViewStoreController(store,cart));
     		Parent root = fxmlLoader.load();
