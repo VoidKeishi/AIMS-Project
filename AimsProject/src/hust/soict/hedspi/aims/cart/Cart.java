@@ -145,6 +145,6 @@ public class Cart {
     	return null;
     }
     public ObservableList<Media> getItemsOrdered() {
-		return FXCollections.observableArrayList(itemsOrdered);
+		return itemsOrdered;
 	}
 }
