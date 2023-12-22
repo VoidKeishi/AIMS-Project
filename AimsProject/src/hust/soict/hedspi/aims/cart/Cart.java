@@ -50,20 +50,21 @@ public class Cart {
         return sum;
     }
 
-    public void printCart() {
+    public String printCart() {
+    	String info = "";
         if (itemsOrdered.isEmpty()) {
-            System.out.println("The cart is empty");
-            return;
+            info = "The cart is empty";
         }
         else {
-            System.out.println("***********************CART***********************");
-            System.out.println("Ordered Items:");
+            info += ("***********************CART***********************\n");
+            info += "Ordered Items:\n";
             for (Media item : itemsOrdered) {
-                System.out.println(item.toString());
+                info += (item.toString()) + "\n";
             }
-            System.out.printf("Total cost: %-5.2f$\n", totalCost());
-            System.out.println("***************************************************");
+            info = info + "Total cost: " + totalCost();
+            info += "***************************************************\n";
         }
+        return info;
     }
     
     public void search(int id){
@@ -146,5 +147,10 @@ public class Cart {
     }
     public ObservableList<Media> getItemsOrdered() {
 		return itemsOrdered;
+	}
+
+	public String cartInfo() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
