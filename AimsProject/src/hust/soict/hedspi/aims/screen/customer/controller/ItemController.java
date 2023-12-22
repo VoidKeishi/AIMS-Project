@@ -17,6 +17,11 @@ public class ItemController {
     @FXML
     private Label lblTitle;
     
+    @FXML
+    private Button btnAddToCart;
+
+    @FXML
+    private Button btnPlay;
     
 	public void setData(Media media){
 		this.media = media;
@@ -30,11 +35,7 @@ public class ItemController {
 			HBox.setMargin(btnAddToCart, new Insets(0,0,0,60));
 		}
 	}
-    @FXML
-    private Button btnAddToCart;
 
-    @FXML
-    private Button btnPlay;
 
     @FXML
     void btnAddToCartClicked(ActionEvent event) {
