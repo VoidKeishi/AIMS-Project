@@ -1,10 +1,12 @@
 package hust.soict.hedspi.test.cart;
+import javax.naming.LimitExceededException;
+
 import hust.soict.hedspi.aims.cart.Cart;
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 
 public class CartTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws LimitExceededException,IllegalArgumentException {
 		//Create a new cart
 		Cart cart = new Cart();
 		//Create new DVD object and add to the cart

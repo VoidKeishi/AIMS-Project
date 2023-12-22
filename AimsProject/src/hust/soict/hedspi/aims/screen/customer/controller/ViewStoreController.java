@@ -44,8 +44,9 @@ public class ViewStoreController {
 					column = 0;
 					row ++;
 				}
+				column +=1;
 				
-				gridPane.add(anchorPane, column++, row);
+				gridPane.add(anchorPane, column, row);
 				GridPane.setMargin(anchorPane, new Insets(20,10,10,10));	
 			} catch (IOException e) {
 				e.printStackTrace();

@@ -2,6 +2,8 @@ package hust.soict.hedspi.aims.media;
 
 import java.util.ArrayList;
 
+import hust.soict.hedspi.aims.exception.PlayerException;
+
 public class CompactDisc extends Disc implements Playable{
 	private String artist;
 	private ArrayList<Track> tracks = new ArrayList<Track>();
@@ -40,21 +42,6 @@ public class CompactDisc extends Disc implements Playable{
 		tracks.remove(track);
 		System.out.println("Remove track successfully");
 	}
-	public int getLength() {
-		int sum = 0;
-		for (Track track : tracks) {
-			sum += track.getLength();
-		}
-		return sum;
-	}
-	public void play() {
-		System.out.println("Playing CD: " + this.getTitle());
-		System.out.println("CD length: " + this.getLength());
-		for (Track track : tracks) {
-			track.play();
-		}
-	}
-	// id - CD - title - category - artist - tracks - length - cost
 	public String toString() {
 		String tracks = "";
 		for (Track track : this.tracks) {
@@ -65,12 +52,43 @@ public class CompactDisc extends Disc implements Playable{
 		return this.getId() + ". CD - " + this.getTitle() + " - " + this.getCategory() + " - " + this.getArtist() + " - " + tracks + " - " + this.getLength() + ": " + this.getCost() + "$";
 	}
 	
-	public String playMedia() {
-		String out = "Playing CD: " + this.getTitle() + "\n";
-		for (Track track: tracks) {
+	public int getLength() {
+		int sum = 0;
+		for (Track track : tracks) {
+			sum += track.getLength();
+		}
+		return sum;
+	}		
+	// id - CD - title - category - artist - tracks - length - cost
+
+	
+	public void play() throws PlayerException {
+		if(this.getLength() > 0) {
+			System.out.println("Playing CD: " + this.getTitle());
+	 		for (Track track: tracks) {
+				try {
+					track.play();
+				}catch(PlayerException e) {
+					throw e;
+				}
+			}
+		}
+		else {
+			throw new PlayerException("ERROR: CD length is non-positive");
+		}
+	}
+	
+	public String playMedia() throws PlayerException{
+		if(this.getLength() > 0) {
+			String out = "Playing CD: " + this.getTitle() + "\n";
+			for (Track track: tracks) {
 				out += track.playMedia();
 				out += "\n";
+			}
+			return out;
 		}
-		return out;
+		else {
+			throw new PlayerException("ERROR: CD length is non-positive");
+		}
 	}
 }

@@ -5,6 +5,7 @@ import java.util.Optional;
 import javax.naming.LimitExceededException;
 
 import hust.soict.hedspi.aims.cart.Cart;
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.Playable;
 import javafx.event.ActionEvent;
@@ -48,7 +49,7 @@ public class ItemController {
 
 
     @FXML
-    void btnAddToCartClicked(ActionEvent event) throws LimitExceededException {
+    void btnAddToCartClicked(ActionEvent event) {
     	Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Add media");
 		alert.setHeaderText("Do you want to add this media to cart? ");
@@ -62,7 +63,7 @@ public class ItemController {
 			    alert1.setHeaderText("Status: ");
 			    alert1.setContentText("Success");
 			    alert1.showAndWait();
-			}catch(IllegalArgumentException e) {
+			}catch(LimitExceededException | IllegalArgumentException e) {
 				Alert alert1 = new Alert(AlertType.ERROR);
 			    alert1.setTitle("Error ");
 			    alert1.setHeaderText("Error: ");
@@ -70,16 +71,23 @@ public class ItemController {
 			    alert1.showAndWait();
 			}
 		}
+
     }
 
     @FXML
     void btnPlayClicked(ActionEvent event) {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Play media");
-		alert.setHeaderText("Playing " + media.getTitle());
-		alert.setContentText(((Playable)media).playMedia());
-		alert.showAndWait();
-
+		try {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Play media");
+			alert.setHeaderText("Playing " + media.getTitle());
+			alert.setContentText(((Playable)media).playMedia());
+			alert.showAndWait();
+		} catch (PlayerException e) {
+			Alert alert1 = new Alert(AlertType.ERROR);
+			alert1.setTitle("Error");
+			alert1.setHeaderText(e.getMessage());
+			alert1.showAndWait();
+		}
     }
 
 }

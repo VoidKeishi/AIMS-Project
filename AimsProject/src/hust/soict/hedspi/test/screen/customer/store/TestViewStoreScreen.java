@@ -31,14 +31,18 @@ public class TestViewStoreScreen extends Application {
 	
 	public static void main(String[] args) {
 		store = new Store();
-		DigitalVideoDisc dvd1 = new DigitalVideoDisc(1,"The Lion King",
-				"Animation","Roger Allers", 87, 19.95f);
-		CompactDisc cd1 = new CompactDisc(2,"Killer", "Queen");
-		Track track1 = new Track("ABC", 3);
-		Track track2 = new Track("DEF", 5);
+		cart = new Cart();
+		DigitalVideoDisc dvd1 = new DigitalVideoDisc(1, "The Lion King", "Animation", "Roger Allers", 87, 19.95f);
+		DigitalVideoDisc dvd2 = new DigitalVideoDisc(2, "Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
+		DigitalVideoDisc dvd3 = new DigitalVideoDisc(3, "Aladin", "Animation", 18.99f);
+		CompactDisc cd1 = new CompactDisc(4,"Evangelion", "Shiro Sagisu", "Anime", "Hideki Anno", 99.95f );
+		Track track1 = new Track("Fly me to the moon", 3);
+		Track track2 = new Track("A Cruel Angel's Thesis", 3);
 		cd1.addTrack(track1);
 		cd1.addTrack(track2);
 		store.addMedia(dvd1);
+		store.addMedia(dvd2);
+		store.addMedia(dvd3);
 		store.addMedia(cd1);
 		launch(args);
 	}
