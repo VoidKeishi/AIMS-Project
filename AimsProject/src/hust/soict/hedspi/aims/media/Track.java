@@ -30,4 +30,8 @@ public class Track implements Playable{
 		}
 		return false;
 	}
+	public String playMedia(){
+		String out = "Playing track: " + this.getTitle() + "\n" + "Track length: " + this.getLength();
+		return out;
+	}
 }

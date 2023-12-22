@@ -23,19 +23,6 @@ public class DigitalVideoDisc extends Disc implements Playable{
 		String result = this.getId() + ". DVD - " + this.getTitle() + " - " + this.getCategory() + " - " + this.getDirector() + " - " + this.getLength() + ": " + this.getCost() + "$";
 		return result;
 	}
-
-	// public boolean isMatch(String title){
-	// 	if (this.getTitle().toLowerCase().equals(title.toLowerCase())) {
-	// 		return true;
-	// 	}
-	// 	return false;
-	// }
-	// public boolean isMatch(int id){
-	// 	if (this.getId() == id) {
-	// 		return true;
-	// 	}
-	// 	return false;
-	// }
 	
 	public void play() {
     	if (this.getLength() <= 0) {
@@ -45,4 +32,9 @@ public class DigitalVideoDisc extends Disc implements Playable{
         	System.out.println("DVD length: " + this.getLength());
     	}
     }
+	
+	public String playMedia(){
+		String out = "Playing DVD: " + this.getTitle() + "\n" + "DVD length: " + this.getLength();
+		return out;
+	}
 }

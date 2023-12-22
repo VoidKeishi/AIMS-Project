@@ -1,6 +1,7 @@
 package hust.soict.hedspi.aims.screen.customer.controller;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import hust.soict.hedspi.aims.cart.Cart;
 import hust.soict.hedspi.aims.media.Media;
@@ -16,7 +17,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
@@ -70,6 +74,9 @@ public class CartController {
 
     @FXML
     private RadioButton radioBtnFilterTitle;
+    
+    @FXML
+    private Button btnPlaceOrder;
 	
 	public void initialize() {
 		colMediaId.setCellValueFactory(new PropertyValueFactory<Media, Integer>("id"));
@@ -158,7 +165,17 @@ public class CartController {
 	
 	@FXML
     void btnPlayPressed(ActionEvent event) {
+    	Media media = tblMedia.getSelectionModel().getSelectedItem();
+    	Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Play media");
+		alert.setHeaderText("Playing " + media.getTitle());
 		
+		if (media instanceof Playable) {
+			alert.setContentText(((Playable)media).playMedia());
+			alert.showAndWait();
+		} else {
+			throw new ClassCastException("This media is not playable!");
+		}
     }
 
     @FXML
@@ -183,5 +200,27 @@ public class CartController {
     		e.printStackTrace();
     	}
     }
-
+    @FXML
+    void btnPlaceOrderPressed(ActionEvent event) {
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Place order");
+		alert.setHeaderText("Do you want to place order? ");
+		alert.setContentText(cart.printCart());
+		Optional<ButtonType> result = alert.showAndWait();
+		if(result.get() == ButtonType.OK) {
+			Alert alert1 = new Alert(AlertType.INFORMATION);
+		    alert1.setTitle("Place Order ");
+		    alert1.setHeaderText("Status: ");
+		    alert1.setContentText("Success");
+		    alert1.showAndWait();
+		    cart.emptyCart();
+		    btnPlaceOrder.setDisable(true);
+		    updateBtnPlaceOrder();
+		}
+    }
+	private void updateBtnPlaceOrder() {
+		if (cart.getItemsOrdered().size() == 0) {
+    		btnPlaceOrder.setDisable(true);
+    	}
+	}
 }
