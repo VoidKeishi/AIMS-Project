@@ -54,16 +54,20 @@ public abstract class Media {
 		this.cost = cost;
 	}
 
-	public boolean equals(Object obj) {
-		if (obj instanceof Media) {
-			Media media = (Media) obj;
-			if (this.title == media.title) {
-				return true;
+	public boolean equals(Object o) throws NullPointerException, ClassCastException{
+		if (o != null) {
+			if (o instanceof Media) {
+				Media media = (Media) o;
+				return (this.getTitle().equals(media.getTitle()) && (this.getCost() == media.getCost()));
+			}
+			else {
+				throw new ClassCastException();
 			}
 		}
-		return false;
+		else {
+			throw new NullPointerException();
+		}
 	}
-
 
 	public boolean isMatch(String title){
 		return (this.getTitle().toLowerCase().equals(title.toLowerCase()));
